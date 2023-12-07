@@ -19,7 +19,7 @@ pipeline {
                     sh 'docker exec node npm ci'
                     sh 'echo "FROM nginx:latest" > Dockerfile'
                     sh 'echo "COPY . /usr/share/nginx/html" >> Dockerfile'
-                    sh 'docker build -t my-nginx-image .'
+                    sh 'docker build -t my-nginx-imagei .'
                     sh 'docker kill node'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def imageName = 'my-nginx-image'
+                    def imageName = 'my-nginx-imagei'
                     def repoName = 'amiradagdoug/jenkins-react-app' // Update with your repository name
                     def imageTag = "${repoName}:${BUILD_ID}" // Use BUILD_ID as the tag
 
